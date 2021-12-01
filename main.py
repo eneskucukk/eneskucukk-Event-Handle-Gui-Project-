@@ -46,8 +46,6 @@ class MainWindow(QMainWindow):
         
         mic = InputDevice('/dev/input/event13')
         
-        anotherwindow_thread=threading.Thread(target=AnotherWindow)
-        anotherwindow_thread.start()
         
         w = AnotherWindow()
         
@@ -56,8 +54,8 @@ class MainWindow(QMainWindow):
                 if event.value == 0:
                     self.ui.label.setText('2. Pencere Kapali...')
                     w.hide()
-                    anotherwindow_thread.join()
-
+                    
+                    
                 elif event.value == 1:
                     self.ui.label.setText('2. Pencere Acik...')
                     w.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowType_Mask)
@@ -76,5 +74,3 @@ if __name__ == "__main__":
     win = MainWindow()
     win.show()
     sys.exit(app.exec())
-    
-
