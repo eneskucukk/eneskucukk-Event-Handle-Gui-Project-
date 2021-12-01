@@ -28,11 +28,13 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.setWindowTitle("Label")
         
+        
         self.ui.label.setText('Lutfen Yeni Pencereyi Acmak icin mikrofonu takiniz.\nAcilan Pencereyi Kapatmak Icin mikrofonu cikartiniz.')
         self.ui.label.setAlignment(Qt.AlignCenter)
         self.ui.label.setStyleSheet('font-size:10px')
 
         event_button_handle_thread=threading.Thread(target=self.event_button_handle)
+        event_button_handle_thread.daemon = True
         event_button_handle_thread.start()
 
     def event_button_handle(self):
@@ -50,7 +52,7 @@ class MainWindow(QMainWindow):
                     self.ui.label.setText('2. Pencere Kapali...')
                     w.hide()
                     
-                    
+                        
                 elif event.value == 1:
                     self.ui.label.setText('2. Pencere Acik...')
                     w.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowType_Mask)
