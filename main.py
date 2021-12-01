@@ -28,11 +28,6 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.setWindowTitle("Label")
         
-        global width
-        global height
-        width = self.frameGeometry().width()
-        height = self.frameGeometry().height()
-        
         self.ui.label.setText('Lutfen Yeni Pencereyi Acmak icin mikrofonu takiniz.\nAcilan Pencereyi Kapatmak Icin mikrofonu cikartiniz.')
         self.ui.label.setAlignment(Qt.AlignCenter)
         self.ui.label.setStyleSheet('font-size:10px')
